@@ -1,0 +1,33 @@
+<section id="helen-banner" aria-labelledby="helen-q-label">
+	<div class="container">
+		<div class="hb-row">
+			<div class="hb-ask">
+				<h1 class="hb-title"><label id="helen-q-label" for="helen-q">Need a quick answer?</label></h1>
+				<form class="hb-box" id="helen-form" role="search" aria-label="Ask Helen" autocomplete="off" novalidate>
+					<input id="helen-q" name="q" type="text" enterkeyhint="send" aria-describedby="helen-q-hint" spellcheck="true">
+					<span class="hb-typed" id="helen-typed" aria-hidden="true"></span>
+					<button type="button" class="hb-mic" id="helen-mic" aria-label="Talk to Helen">
+						<svg class="hb-ico-mic" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>
+						<svg class="hb-ico-send" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/></svg>
+					</button>
+				</form>
+				<p class="hb-hint" id="helen-q-hint">Type your question, or tap the microphone to talk with Helen.</p>
+			</div>
+			<div class="hb-video">
+				<div class="hb-frame" id="helen-frame">
+					<video id="helen-video" preload="none" playsinline poster="helen/helen-maple-poster.jpg" aria-label="Helen Maple introduction video">
+						<source src="helen/helen-maple-intro-town.mp4" type="video/mp4">
+						<track kind="captions" srclang="en" label="English" src="helen/helen-maple-intro-town.vtt" default>
+					</video>
+					<button type="button" class="hb-play" id="helen-play" aria-label="Play Helen's introduction video">
+						<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+					</button>
+					<button type="button" class="hb-expand" id="helen-expand" aria-label="Watch full screen">
+						<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+					</button>
+				</div>
+				<p class="hb-caption">Meet Helen Maple</p>
+			</div>
+		</div>
+	</div>
+</section>

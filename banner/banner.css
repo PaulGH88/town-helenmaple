@@ -1,0 +1,107 @@
+/* HELEN banner - sits inside the Town's #slider, over its lake photos, in the Town's own
+   colours (--brandcolor #092D3B, tiles #334B4B, --lightbrandcolor #93DDFB) and fonts
+   (Outfit headings, Commissioner body). The quick-link tiles overlap the bottom ~250px of
+   the hero, so the banner keeps its content above that band. */
+#slider .tns-controls, #slider .tns-nav { display: none !important; }
+#slider::before { background: linear-gradient(90deg, rgba(9,45,59,.82) 0%, rgba(9,45,59,.55) 55%, rgba(9,45,59,.25) 100%); }
+
+#helen-banner { position: relative; z-index: 3; padding: 170px 0 320px; }
+#helen-banner .hb-row { display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+#helen-banner .hb-ask { flex: 1 1 auto; max-width: 720px; }
+#helen-banner .hb-title { margin: 0 0 22px; font-size: 64px; line-height: 1.05; color: var(--lightgray); text-transform: none; text-shadow: 0 2px 12px rgba(0,0,0,.35); }
+#helen-banner .hb-title label { margin: 0; cursor: text; font: inherit; }
+
+#helen-banner .hb-box { position: relative; display: block; margin: 0; }
+#helen-banner .hb-box input {
+	width: 100%; height: 72px; padding: 0 84px 0 26px; border: 2px solid transparent; border-radius: 8px;
+	background: var(--lightgray); color: var(--darkgray); font-family: "Commissioner", sans-serif; font-size: 21px;
+	box-shadow: 0 10px 30px rgba(0,0,0,.28); outline: none; -webkit-appearance: none; appearance: none;
+}
+#helen-banner .hb-box input:focus { border-color: var(--lightbrandcolor); box-shadow: 0 0 0 4px rgba(147,221,251,.55), 0 10px 30px rgba(0,0,0,.28); }
+#helen-banner .hb-typed {
+	position: absolute; left: 28px; right: 90px; top: 50%; transform: translateY(-50%); pointer-events: none;
+	color: #66777A; font-family: "Commissioner", sans-serif; font-size: 21px; white-space: nowrap; overflow: hidden;
+	display: flex; justify-content: flex-start;
+}
+/* A long question scrolls like real typing: the end stays in view. */
+#helen-banner .hb-typed.hb-overflow { justify-content: flex-end; -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 18px); mask-image: linear-gradient(90deg, transparent 0, #000 18px); }
+#helen-banner .hb-typed .hb-t { flex-shrink: 0; }
+#helen-banner .hb-typed.hb-caret .hb-t::after { content: ""; display: inline-block; width: 2px; height: 1.1em; margin-left: 2px; vertical-align: -0.18em; background: #66777A; animation: hb-blink 1s steps(1) infinite; }
+@keyframes hb-blink { 50% { opacity: 0; } }
+#helen-banner .hb-box.hb-active .hb-typed { display: none; }
+
+#helen-banner .hb-mic {
+	position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 54px; height: 54px; border: 0; border-radius: 8px;
+	background: var(--brandcolor); color: var(--lightgray); display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .3s, color .3s;
+}
+#helen-banner .hb-mic:hover { background: var(--lightbrandcolor); color: var(--brandcolor); }
+#helen-banner .hb-mic:focus-visible { outline: 3px solid var(--lightbrandcolor); outline-offset: 2px; }
+#helen-banner .hb-mic .hb-ico-send { display: none; }
+#helen-banner .hb-box.hb-has-text .hb-mic .hb-ico-send { display: block; }
+#helen-banner .hb-box.hb-has-text .hb-mic .hb-ico-mic { display: none; }
+
+#helen-banner .hb-hint { margin: 16px 2px 0; color: var(--lightgray); font-size: 17px; line-height: 1.4; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
+
+/* Video card at half its first size (Paul, 2026-11-06 7:45 AM) so the box leads. */
+#helen-banner .hb-video { flex: 0 0 150px; text-align: center; margin-right: 56px; } /* clear of the Town's floating share button */
+#helen-banner .hb-frame { position: relative; width: 150px; aspect-ratio: 3 / 4; border-radius: 8px; overflow: hidden; background: #334B4B; box-shadow: 0 8px 22px rgba(0,0,0,.3); border: 2px solid rgba(255,255,255,.9); }
+#helen-banner .hb-frame video { width: 100%; height: 100%; object-fit: cover; display: block; background: #334B4B; }
+#helen-banner .hb-frame:fullscreen video, #helen-banner .hb-frame:-webkit-full-screen video { object-fit: contain; background: #000; }
+#helen-banner .hb-frame:fullscreen { border: 0; border-radius: 0; }
+#helen-banner .hb-play {
+	position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 48px; height: 48px; border-radius: 50%; border: 0;
+	background: rgba(9,45,59,.88); color: var(--lightgray); display: flex; align-items: center; justify-content: center; padding-left: 3px; cursor: pointer; transition: background .3s, color .3s;
+}
+#helen-banner .hb-play:hover { background: var(--lightbrandcolor); color: var(--brandcolor); }
+#helen-banner .hb-frame.hb-playing .hb-play { display: none; }
+#helen-banner .hb-expand {
+	position: absolute; right: 6px; top: 6px; width: 32px; height: 30px; border: 1px solid #D2E2E2; border-radius: 6px;
+	background: #D2E2E2; color: var(--brandcolor); display: flex; align-items: center; justify-content: center; padding: 0; cursor: pointer; transition: background .3s;
+}
+#helen-banner .hb-expand:hover { background: var(--lightbrandcolor); }
+#helen-banner .hb-play:focus-visible, #helen-banner .hb-expand:focus-visible { outline: 3px solid var(--lightbrandcolor); outline-offset: 2px; }
+#helen-banner .hb-caption { margin: 8px 0 0; color: var(--lightgray); font-family: "Outfit", sans-serif; font-weight: 700; font-size: 16px; line-height: 1.2; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
+
+/* The floating Helen widget stays out of sight while the banner's own box and mic are on screen. */
+elevenlabs-convai.hb-launcher-hidden { visibility: hidden; }
+/* Helen's widget (fixed, z 1000 by default) sits above the Town's sticky header (1020) and share button (9999). */
+elevenlabs-convai { z-index: 10001 !important; }
+/* Helen's widget sits above the Town's own fixed buttons, and while she is open the Town's
+   floating share button steps aside so it never covers her Send button. */
+/* The Town's events "View Event" buttons, made links in the copy, keep the Town's button look. */
+#mini-events a.cal-more, #mini-events a.cal-more:visited { color: var(--lightgray); text-decoration: none; }
+#mini-events .cal-content:hover a.cal-more { color: var(--darkgray); }
+
+@media only screen and (max-width: 1199px) {
+	#helen-banner .hb-title { font-size: 54px; }
+	#helen-banner .hb-video { flex-basis: 150px; }
+}
+@media only screen and (max-width: 991px) {
+	#slider::before { background: rgba(9,45,59,.62); }
+	#helen-banner { padding: 116px 0 290px; }
+	#helen-banner .hb-row { flex-direction: column; align-items: stretch; gap: 30px; }
+	#helen-banner .hb-ask { max-width: none; }
+	#helen-banner .hb-title { font-size: 38px; margin-bottom: 16px; }
+	#helen-banner .hb-box input { height: 64px; font-size: 18px; padding-right: 74px; padding-left: 18px; }
+	#helen-banner .hb-typed { font-size: 18px; left: 20px; right: 78px; }
+	#helen-banner .hb-mic { width: 48px; height: 48px; right: 8px; }
+	#helen-banner .hb-hint { font-size: 16px; }
+	#helen-banner .hb-video { flex-basis: auto; margin-right: 0; }
+	#helen-banner .hb-frame { width: 115px; margin: 0 auto; }
+}
+@media only screen and (max-width: 480px) {
+	#helen-banner .hb-box input, #helen-banner .hb-typed { font-size: 17px; }
+	/* Phones: the example wraps to two lines so every question shows from its first word (Gloria, 11-06). */
+	#helen-banner .hb-box input { height: 72px; }
+	#helen-banner .hb-typed, #helen-banner .hb-typed.hb-overflow { display: block; white-space: normal; line-height: 1.25; -webkit-mask-image: none; mask-image: none; }
+	#helen-banner .hb-typed .hb-t { display: inline; }
+}
+@media only screen and (max-width: 767px) {
+	/* Phones: the banner's own box and mic are the way in; the floating launcher appears only
+	   once Helen has been opened, so it never sits on the Town's share button. */
+	elevenlabs-convai:not(.hb-opened) { visibility: hidden; }
+	body.hb-helen-open .floating-share-btn { display: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+	#helen-banner .hb-typed.hb-caret .hb-t::after { animation: none; display: none; }
+}

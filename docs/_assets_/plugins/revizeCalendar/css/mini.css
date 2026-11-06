@@ -1,0 +1,28 @@
+#mini-events {margin-bottom: 47px;}
+.mini-list-loaded {display: flex!important;}
+#mini-events .tns-outer {border-radius: 8px; background: #D2E2E2; padding: 24px!important;}
+.cal-content {border-radius: 8px; background: transparent; color: #fff; padding: 0; transition: 0.3s; cursor: pointer;}
+
+.eveBx {background: #334B4B; border-radius: 8px; min-height: 102px; padding: 23px 32px; margin: 0 0 8px; transition: all 0.5s;}
+.cal-item img {width: 24px; margin-right: 8px; margin-top: -1px;}
+.cal-item {display: flex; align-items: center; font-size: 12px; font-weight: 700; line-height: 18px;}
+.cal-item {margin-bottom: 7px;}
+.cal-item:last-child {margin-bottom: 0;}
+
+.eveTitle {background: #334B4B; border-radius: 8px; height: 102px; display: flex; justify-content: center; align-items: center; padding: 0 33px; margin: 0 0 10px;  transition: all 0.5s;}
+.cal-title {color: var(--lightgray); font-size: 18px; font-family: "Commissioner", sans-serif; font-weight: 700; margin: 0; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;}
+.cal-more {border-radius: 8px; border: 1px solid var(--brandcolor); background: var(--brandcolor); display: inline-block; padding: 6px 20px; font-size: 16px; font-weight: 400; transition: all 0.5s; line-height: 24px;}
+.cal-content:hover .eveBx, 
+.cal-content:hover .eveTitle,
+.cal-content:hover .cal-more {background: var(--lightbrandcolor);}
+.cal-content:hover .cal-more {border-color: var(--lightbrandcolor); font-weight: 700; color: var(--darkgray);}
+
+.cal-content:hover .cal-title,
+.cal-content:hover .cal-item {color: var(--darkgray);}
+.cal-content:hover .cal-item img {filter: brightness(0) saturate(100%) invert(0%) sepia(100%) saturate(16%) hue-rotate(246deg) brightness(98%) contrast(105%);}
+
+@media only screen and (max-width:576px){
+    #mini-events .tns-outer {padding: 20px 20px 20px 0 !important;}
+    .cal-content {padding: 25px;}
+    .cal-event {padding-right: 0 !important;}
+}
