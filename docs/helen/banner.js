@@ -145,6 +145,20 @@
 			}, { threshold: 0.15 }).observe(banner);
 		}
 	}
+	// When Helen is collapsed again, put the Town's page back as it was: the share button
+	// returns and, on phones, the floating launcher hides again.
+	setInterval(function () {
+		if (!opened || !root()) return;
+		// The widget's message box exists only while its panel is open.
+		var expanded = !!root().querySelector('textarea');
+		if (!expanded) {
+			document.body.classList.remove('hb-helen-open');
+			widget.classList.remove('hb-opened');
+		} else {
+			document.body.classList.add('hb-helen-open');
+			widget.classList.add('hb-opened');
+		}
+	}, 700);
 	if (document.readyState === 'complete') loadWidgetScript(); else window.addEventListener('load', loadWidgetScript);
 
 	/* ---------- intro video ---------- */

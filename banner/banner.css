@@ -42,7 +42,7 @@
 
 #helen-banner .hb-hint { margin: 16px 2px 0; color: var(--lightgray); font-size: 17px; line-height: 1.4; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
 
-/* Video card at half its first size (Paul, 2026-11-06 7:45 AM) so the box leads. */
+/* A small video card so the box leads. */
 #helen-banner .hb-video { flex: 0 0 150px; text-align: center; margin-right: 56px; } /* clear of the Town's floating share button */
 #helen-banner .hb-frame { position: relative; width: 150px; aspect-ratio: 3 / 4; border-radius: 8px; overflow: hidden; background: #334B4B; box-shadow: 0 8px 22px rgba(0,0,0,.3); border: 2px solid rgba(255,255,255,.9); }
 #helen-banner .hb-frame video { width: 100%; height: 100%; object-fit: cover; display: block; background: #334B4B; }
@@ -91,7 +91,7 @@ elevenlabs-convai { z-index: 10001 !important; }
 }
 @media only screen and (max-width: 480px) {
 	#helen-banner .hb-box input, #helen-banner .hb-typed { font-size: 17px; }
-	/* Phones: the example wraps to two lines so every question shows from its first word (Gloria, 11-06). */
+	/* Phones: the example wraps to two lines so every question shows from its first word. */
 	#helen-banner .hb-box input { height: 72px; }
 	#helen-banner .hb-typed, #helen-banner .hb-typed.hb-overflow { display: block; white-space: normal; line-height: 1.25; -webkit-mask-image: none; mask-image: none; }
 	#helen-banner .hb-typed .hb-t { display: inline; }
@@ -105,3 +105,8 @@ elevenlabs-convai { z-index: 10001 !important; }
 @media (prefers-reduced-motion: reduce) {
 	#helen-banner .hb-typed.hb-caret .hb-t::after { animation: none; display: none; }
 }
+
+/* Captions readable on the small card, larger in full screen. */
+#helen-video::cue { font-size: 13px; line-height: 1.25; background: rgba(0,0,0,.72); }
+#helen-banner .hb-frame:fullscreen #helen-video::cue { font-size: 30px; }
+#helen-banner .hb-frame:-webkit-full-screen #helen-video::cue { font-size: 30px; }
