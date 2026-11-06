@@ -145,20 +145,25 @@
 			}, { threshold: 0.15 }).observe(banner);
 		}
 	}
-	// When Helen is collapsed again, put the Town's page back as it was: the share button
-	// returns and, on phones, the floating launcher hides again.
+	// When Helen is closed again with her own close button, put the Town's page back as it was:
+	// the share button returns and, on phones, the floating launcher hides again. Opening her
+	// from her launcher shows her again.
+	function setOpen(isOpen) {
+		document.body.classList.toggle('hb-helen-open', isOpen);
+		if (widget) widget.classList.toggle('hb-opened', isOpen);
+	}
+	var hooked = false;
 	setInterval(function () {
-		if (!opened || !root()) return;
-		// The widget's message box exists only while its panel is open.
-		var expanded = !!root().querySelector('textarea');
-		if (!expanded) {
-			document.body.classList.remove('hb-helen-open');
-			widget.classList.remove('hb-opened');
-		} else {
-			document.body.classList.add('hb-helen-open');
-			widget.classList.add('hb-opened');
-		}
-	}, 700);
+		if (hooked || !root()) return;
+		hooked = true;
+		root().addEventListener('click', function (e) {
+			var b = e.target && e.target.closest ? e.target.closest('button') : null;
+			if (!b) return;
+			var label = (b.getAttribute('aria-label') || '').toLowerCase();
+			if (/collapse|close|minimi/.test(label)) setTimeout(function () { setOpen(false); }, 350);
+			else if (/expand/.test(label)) { opened = true; setOpen(true); }
+		}, true);
+	}, 500);
 	if (document.readyState === 'complete') loadWidgetScript(); else window.addEventListener('load', loadWidgetScript);
 
 	/* ---------- intro video ---------- */
